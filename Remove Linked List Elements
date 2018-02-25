@@ -1,0 +1,43 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* removeElements(struct ListNode* head, int val) {
+    struct ListNode *p=NULL,*del=NULL,*pre;
+    for(p=head;p!=NULL;p=p->next){
+        if(p->val==val){
+            if(p==head){
+                del=head;
+                head=head->next;
+            }else{
+                del=p;
+                pre->next=p->next;
+            }
+            free(del);
+        }else{
+            pre=p;   
+        }    
+    }
+    return head;
+/*public: 双指针
+    ListNode* removeElements(ListNode* head, int val) {
+      // our pointer to the pointer will point to the field "next" or "head" at the beginning
+      ListNode** ppCurr = &head;
+      while (*ppCurr != NULL) {
+        if ((*ppCurr)->val == val) {
+          // remove the item here. whatchout for a memory leaks!!!
+          *ppCurr = (*ppCurr)->next;
+        } else {
+          // if we dont remove - move to the next one
+          ppCurr = &((*ppCurr)->next);
+        }
+      }
+      
+      return head;
+    }
+};
+*/
+}
