@@ -1,0 +1,11 @@
+bool isPalindrome(int x) {
+    int rev = 0;
+    int y = x;
+    if(x < 0) return false;
+    for(y ; y > 0 ; y /= 10)
+    {
+    rev = y % 10 + rev * 10;
+    }
+    if (rev == x) return true;
+    else return false;
+}
