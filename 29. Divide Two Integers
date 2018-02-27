@@ -1,0 +1,18 @@
+int divide(int dividend, int divisor) {
+    long long Dend = labs((int)dividend), Dsor = labs((int)divisor);
+    if (!divisor || (dividend == INT_MIN && divisor == -1))
+            return INT_MAX;
+     int sign = ((dividend < 0) ^ (divisor < 0)) ? -1 : 1;
+        int res = 0;
+        while (Dend >= Dsor) { 
+            long long temp = Dsor, multiple = 1;
+            while (Dend  >= (temp << 1)) {
+                temp <<= 1;
+                multiple <<= 1;
+            }
+            Dend -= temp;
+            res += multiple;
+        }
+        return sign == 1 ? res : -res; 
+    }
+//利用位运算将除数倍增至小于被除数的最大倍再与被除数做减法，将结果再经行运算。累加倍数。
